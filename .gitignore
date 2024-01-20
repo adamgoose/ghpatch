@@ -1,3 +1,4 @@
 .devenv
 .env
 result
+.pre-commit-config.yaml

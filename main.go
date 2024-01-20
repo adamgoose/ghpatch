@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/adamgoose/ghpatch/cmd"
 	"github.com/adamgoose/ghpatch/lib"
 	"github.com/defval/di"
@@ -20,7 +22,9 @@ func main() {
 		panic(err)
 	}
 
-	cmd.Execute()
+	if err := cmd.Execute(); err != nil {
+		os.Exit(1)
+	}
 }
 
 func init() {
