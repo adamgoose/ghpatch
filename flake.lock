@@ -163,15 +163,15 @@
       "locked": {
         "lastModified": 1698758712,
         "narHash": "sha256-aHdDJ/2R4mk4BeJ03W4OV94Op8PVYvfjSyQucl0W9DQ=",
-        "owner": "niklashhh",
+        "owner": "nix-community",
         "repo": "gomod2nix",
         "rev": "00c8e2fad3c0b3b86b0669d40e69f97d3ad1cdfb",
         "type": "github"
       },
       "original": {
-        "owner": "niklashhh",
-        "ref": "fix-recursive-symlinker",
+        "owner": "nix-community",
         "repo": "gomod2nix",
+        "rev": "00c8e2fad3c0b3b86b0669d40e69f97d3ad1cdfb",
         "type": "github"
       }
     },
