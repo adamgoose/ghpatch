@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    devenv.url = "github:cachix/devenv/v0.6.3";
-    gomod2nix.url = "github:nix-community/gomod2nix/00c8e2fad3c0b3b86b0669d40e69f97d3ad1cdfb";
+    devenv.url = "github:cachix/devenv/v1.10";
+    gomod2nix.url = "github:nix-community/gomod2nix";
     gomod2nix.inputs.nixpkgs.follows = "nixpkgs";
 
     std.url = "github:divnix/std";
@@ -16,23 +16,22 @@
     extra-substituters = "https://devenv.cachix.org https://cache.garnix.io";
   };
 
-  outputs = { std, ... }@inputs:
+  outputs = {std, ...} @ inputs:
     std.growOn
-      {
-        inherit inputs;
-        cellsFrom = ./nix;
-        cellBlocks = with std.blockTypes; [
-          (pkgs "pkgs")
-          (runnables "apps")
-          (devshells "shells")
-        ];
-      }
-      {
-        devShells = std.harvest inputs.self [ "ghpatch" "shells" ];
+    {
+      inherit inputs;
+      cellsFrom = ./nix;
+      cellBlocks = with std.blockTypes; [
+        (pkgs "pkgs")
+        (runnables "apps")
+        (devshells "shells")
+      ];
+    }
+    {
+      devShells = std.harvest inputs.self ["ghpatch" "shells"];
 
-        packages = std.harvest inputs.self [
-          [ "ghpatch" "apps" ]
-        ];
-      };
-
+      packages = std.harvest inputs.self [
+        ["ghpatch" "apps"]
+      ];
+    };
 }
